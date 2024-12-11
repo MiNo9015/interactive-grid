@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import "./App.css"; // CSS-Datei für das Styling
+import "./styles/App.css"; 
 
 function App() {
-  // Zustand für die Anzahl der Zeilen und Spalten
-  const [rows, setRows] = useState(5); // Standardmäßig 5 Zeilen
-  const [columns, setColumns] = useState(5); // Standardmäßig 5 Spalten
+  // Anzahl der Zeilen und Spalten
+  const [rows, setRows] = useState(5); // Standard: 5 Zeilen
+  const [columns, setColumns] = useState(5); // Standard: 5 Spalten
 
   // Zustand für aktiven Zellen
   const [activeCells, setActiveCells] = useState([]);
@@ -19,11 +19,6 @@ function App() {
       // Wenn die Zelle inaktiv ist, aktiviere sie
       setActiveCells([...activeCells, cellId]);
     }
-  };
-
-  // Funktion, um das Grid zu reseten
-  const resetGrid = () => {
-    setActiveCells([]); // Alle aktiven Zellen leeren
   };
 
   // Funktion zum Rendern des Grids basierend auf `rows` und `columns`
@@ -60,16 +55,34 @@ function App() {
   };
 
 
- // Sortiere die Liste nach Reihen (row) und Spalten (column)
-  const sortedActiveCells = [...activeCells].sort((a, b) => {
+ // Sortiere die Liste nach Zeilen (row) und Spalten (column)
+ const sortedActiveCells = [...activeCells].sort((a, b) => {
   const [rowA, colA] = a.split("-").map(Number);
   const [rowB, colB] = b.split("-").map(Number);
 
-  // Zuerst nach Zeilen sortieren, dann nach Spalten
+  // Sortieren nach Zeilen, dann Spalten
   return rowA === rowB ? colA - colB : rowA - rowB;
 });
 
+// Gruppiere die sortierten Zellen nach Zeilen
+const groupedActiveCells = sortedActiveCells.reduce((acc, cellId) => {
+  const [row, col] = cellId.split("-").map(Number);
+  if (!acc[row]) acc[row] = [];
+  acc[row].push(`(${row}, ${col})`);
+  return acc;
+}, {});
 
+// Funktion leere alle aktiven Zellen
+const resetGrid = () => {
+  setActiveCells([]); 
+};
+
+// Funktion Grid und aktiven Zellen zurückzusetzen
+const resetToDefault = () => {
+  setRows(5);
+  setColumns(5);
+  setActiveCells([]);
+};
 
   return (
     <div className="App">
@@ -81,7 +94,7 @@ function App() {
           Zeilen:
           <input
             type="number"
-            value={rows} // Binde an den Zustand
+            value={rows} // Binde an Zeilen
             min="1"
             onChange={(e) => setRows(Number(e.target.value))} // Aktualisiere die Zeilenanzahl
           />
@@ -90,12 +103,13 @@ function App() {
           Spalten:
           <input
             type="number"
-            value={columns} // Binde an den Zustand
+            value={columns} // Binde an den Spalten
             min="1"
             onChange={(e) => setColumns(Number(e.target.value))} // Aktualisiere die Spaltenanzahl
           />
         </label>
-        <button onClick={resetGrid}>Reset</button> {/* Reset-Button */}
+        <button onClick={resetGrid}>Reset Aktive Zellen</button> {/* Reset-Button für Zellen */}
+        <button onClick={resetToDefault}>Reset Grid (5x5)</button>{/* Reset- Button für Grit und Zellen */}
       </div>
 
       {/* Grid anzeigen */}
@@ -103,13 +117,17 @@ function App() {
 
       {/* Liste der aktiven Zellen */}
       <div className="active-cells">
-        <h3>Aktive Zellen:</h3>
-        <ul>
-          {sortedActiveCells.map((cellId) => {
-            const [row, col] = cellId.split("-"); // ID in Zeile und Spalte aufteilen
+        <h3 className="active-cells-header">Aktive Zellen:</h3>
+        <ul className="active-cells-list">
+          {Object.keys(groupedActiveCells).map((row) => {
+            const cells = groupedActiveCells[row];
+
             return (
-              <li key={cellId}>
-                Zelle ({row}, {col})
+              <li key={row}>
+                <div className="cell-group">
+                  <span>{`Zelle `}</span>
+                  <span>{cells.join(", ")}</span>
+                </div>
               </li>
             );
           })}
@@ -118,5 +136,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

@@ -5,7 +5,7 @@
 }
 
 .title {
-  color: #c00ea2;
+  color: #b91243;
   font-size: 2em;
   margin-bottom: 20px;
 }
@@ -36,20 +36,38 @@ button {
 }
 
 .cell {
-  width: 40px; /* Standard-Breite der Zellen */
-  height: 40px; /* Standard-Höhe der Zellen */
-  background-color: grey; /* Standard-Hintergrundfarbe der Zellen */
+  width: 40px; /* Standard-Breite Zellen */
+  height: 40px; /* Standard-Höhe  Zellen */
+  background-color: grey; /* Standard-Hintergrundfarbe Zellen */
   margin: 1px;
   border: 1px solid #000;
   cursor: pointer;
 }
 
 .cell.active {
-  background-color: green; /*Aktive Zellen grün */
+  background-color: green; /*Aktive Zellen = grün */
 }
 
-.active-cells {
-  margin-top: 20px;
+.active-cells-header {
   text-align: center;
-  display: center;
+  margin-bottom: 20px;
+}
+
+.active-cells-list {
+  text-align: start;
+  list-style-type: none;
+  padding: 0;
+}
+
+.active-cells-list li {
+  margin-bottom: 10px;
+}
+
+.cell-group {
+  margin-left: 20px;
+  display: inline-block;
+}
+
+.cell-group span {
+  white-space: nowrap; /* Verhindert Umbruch Zelle (x, y) */
 }
