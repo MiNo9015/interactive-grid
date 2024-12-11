@@ -3,11 +3,12 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif; 
-    background-color: #f4f4f9; 
-    color: #333; 
+    background-color: #000000; 
+    color: #ffffff; 
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 20px; 
+    justify-content: center; /*  */
+    align-items: flex-start;
     min-height: 100vh; /* Vollbild-Höhe */
   }
   
@@ -20,18 +21,17 @@ body {
   
   /* Entferne Standardformatierungen von Buttons */
   button {
-    background-color: #007bff; 
+    background-color: #782f99; 
     color: white;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 14px;
-    transition: background-color 0.3s ease;
   }
   
   button:hover {
-    background-color: #0056b3; /* Etwas dunkler bei Hover */
+    background-color: #0056b3; /* Bei Mouseover-Button (hover) Button andere Farbe zur Hervorhebung */
   }
   
   /* Standardstil für Input-Felder */

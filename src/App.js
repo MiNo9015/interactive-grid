@@ -59,9 +59,21 @@ function App() {
     return grid; // Das gesamte Grid zurückgeben
   };
 
+
+ // Sortiere die Liste nach Reihen (row) und Spalten (column)
+  const sortedActiveCells = [...activeCells].sort((a, b) => {
+  const [rowA, colA] = a.split("-").map(Number);
+  const [rowB, colB] = b.split("-").map(Number);
+
+  // Zuerst nach Zeilen sortieren, dann nach Spalten
+  return rowA === rowB ? colA - colB : rowA - rowB;
+});
+
+
+
   return (
     <div className="App">
-      <h1>Interaktives Grid</h1>
+      <h1 className="title">Interaktives Grid</h1>
 
       {/* Steuerungselemente */}
       <div className="controls">
@@ -83,7 +95,7 @@ function App() {
             onChange={(e) => setColumns(Number(e.target.value))} // Aktualisiere die Spaltenanzahl
           />
         </label>
-        <button onClick={resetGrid}>Reset</button> {/* Button für Reset */}
+        <button onClick={resetGrid}>Reset</button> {/* Reset-Button */}
       </div>
 
       {/* Grid anzeigen */}
@@ -93,7 +105,7 @@ function App() {
       <div className="active-cells">
         <h3>Aktive Zellen:</h3>
         <ul>
-          {activeCells.map((cellId) => {
+          {sortedActiveCells.map((cellId) => {
             const [row, col] = cellId.split("-"); // ID in Zeile und Spalte aufteilen
             return (
               <li key={cellId}>

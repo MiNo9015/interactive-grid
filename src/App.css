@@ -4,6 +4,12 @@
   margin: 20px;
 }
 
+.title {
+  color: #c00ea2;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
 .controls {
   margin-bottom: 20px;
 }
@@ -21,7 +27,7 @@ button {
 
 .grid-container {
   display: inline-block;
-  border: 2px solid #ccc;
+  border: 2px solid #f8f4f4;
   padding: 5px;
 }
 
@@ -32,18 +38,18 @@ button {
 .cell {
   width: 40px; /* Standard-Breite der Zellen */
   height: 40px; /* Standard-Höhe der Zellen */
-  background-color: rgb(215, 215, 228); /* Standard-Hintergrundfarbe */
+  background-color: grey; /* Standard-Hintergrundfarbe der Zellen */
   margin: 1px;
   border: 1px solid #000;
   cursor: pointer;
 }
 
 .cell.active {
-  background-color: green; /* Aktive Zellen sind grün */
+  background-color: green; /*Aktive Zellen grün */
 }
 
 .active-cells {
   margin-top: 20px;
-  text-align: left;
-  display: inline-block;
+  text-align: center;
+  display: center;
 }
