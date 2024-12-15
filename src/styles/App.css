@@ -1,7 +1,7 @@
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
-  max-width: 90%; 
+  max-width: 90%;  /* App nimmt max. 90% der Fensterbreite ein */
   margin: 0 auto; /* Zentriere App */
  
 }
@@ -16,7 +16,7 @@
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Abstand zwischen den Buttons und Inputs */
+  gap: 10px; /* Abstand zwischen Buttons und Inputs */
   justify-content: center;
 }
 
@@ -26,20 +26,18 @@ input[type="number"] {
 }
 
 button {
-  margin: 0; /* Entferne unnötige Außenabstände */
-  padding: 8px 12px; /* Gleichmäßige Polsterung */
+  margin: 0; /* Entfernt Außenabstände */
+  padding: 8px 12px; /* Polsterung */
   font-size: 14px;
 }
 
 .grid-container {
   display: inline-block;
-  max-height: 70vh;
-    max-width: 90vw;
-    border: 2px solid red; /* Zum Debuggen */
-    padding: 5px;
-  overflow-x: scroll;
-  overflow-y: scroll;
-  white-space: nowrap; /* Verhindert Zeilenumbruch */
+  max-height: 70vh; /* Höhe Container */
+  max-width: 90vw; /* Breite Containers */
+  overflow: auto; /* Scrollbar bei Bedarf */
+  border: 1px solid #ccc; /* Rahmen für Container */
+  margin: 0 auto; /* Zentriert das Grid */
 }
 
 .grid-container::-webkit-scrollbar {
@@ -58,7 +56,6 @@ button {
 
 .grid-row {
   display: flex; /* Jede Zeile enthält mehrere Zellen */
-  flex-wrap: nowrap; /* Verhindert Umbrüche innerhalb der Zeilen */
 }
 
 .cell {
@@ -68,9 +65,7 @@ button {
   margin: 1px;
   border: 1px solid #000;
   cursor: pointer; /* Zeigt den Zeigefinger-Cursor an */
-  display: block;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;  /* Zellen schrumpfen nicht*/
 }
 
 .cell.active {

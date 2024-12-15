@@ -3,7 +3,7 @@ body {
   display: flex;
   flex-direction: column; /* vertikale Ausrichtung */
   justify-content: center;
-  align-items: center;
+  align-items: flex;  /* gleichmäßiger Abstand zum Rand horizontal */
   }
   
   /* Entferne Standardabstände von Listen */
@@ -13,7 +13,7 @@ body {
     margin: 0;
   }
   
-  /* Entferne Standardformatierungen von Buttons */
+  /* Entfernt Standardformatierungen von Buttons */
   button {
     background-color: #782f99; 
     color: white;
@@ -28,7 +28,7 @@ body {
     background-color: #0056b3; /* Mouseover-Button (hover) = Button andere Farbe  */
   }
   
-  /* Standardstil für Input-Felder */
+  /* Standardstil Input-Felder */
   input[type="number"] {
     width: 60px;
     padding: 5px;
