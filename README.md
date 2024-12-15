@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# **Interaktives Grid**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivieren/deaktivieren, die Koordinaten der Zellen anzuzeigen und die Zellenliste nach Zeilen gruppiert darzustellen.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## **Inhalt**
+1. [Funktionen](#funktionen)
+2. [Technologien](#technologien)
+3. [Installation](#installation)
+4. [Nutzung](#nutzung)
+5. [Screenshots](#screenshots)
+6. [Anpassungen](#anpassungen)
+7. [Lizenz](#lizenz)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## **Funktionen**
+- **Grid-Steuerung**: Benutzer kann die Anzahl der Zeilen und Spalten dynamisch anpassen.
+- **Zellenaktivierung**: Durch Klicken werden Zellen aktiviert oder deaktiviert.
+- **Koordinatenanzeige**: Beim Überfahren (Hover) einer Zelle werden deren Koordinaten angezeigt.
+- **Gruppierte Anzeige aktiver Zellen**: Aktivierte Zellen werden nach Zeilen gruppiert und übersichtlich dargestellt.
+- **Reset-Optionen**: 
+   - Zurücksetzen der aktiven Zellen.
+   - Zurücksetzen des Grids auf den Standardzustand (5x5).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## **Technologien**
+- **Frontend**: React.js
+- **CSS**: Styling für das Grid und die Benutzeroberfläche.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## **Installation**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Voraussetzungen**:  
+   Stelle sicher, dass **Node.js** und **npm** installiert sind.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Repository klonen**:
+   ```bash
+   git clone <https://github.com/MiNo9015/interactive-grid.git>
+   cd interaktives-grid
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Abhängigkeiten installieren**:
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+4. **Projekt starten**:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Öffne die Anwendung unter:  
+   ```
+   http://localhost:3000
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## **Nutzung**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Steuerungselemente**
+- **Zeilen/Spalten**: Gib die gewünschte Anzahl an Zeilen und Spalten ein.
+- **Klicken auf eine Zelle**: Aktiviert oder deaktiviert die jeweilige Zelle.
+- **Hover**: Zeigt die Koordinaten der Zelle an.
+- **Reset-Buttons**:
+   - *Reset Aktive Zellen*: Deaktiviert alle Zellen.
+   - *Reset Grid*: Setzt das Grid auf 5x5 zurück.
 
-## Learn More
+### **Anzeige der aktiven Zellen**
+Aktive Zellen werden in einer Liste gruppiert nach Zeilen angezeigt, z. B.:  
+`Zelle (1,2), (1,4)`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Screenshots**
 
-### Code Splitting
+### **Grid mit aktiven Zellen**
+![Grid mit aktiven Zellen](https://via.placeholder.com/600x400?text=Grid+Screenshot)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## **Anpassungen**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### **Zellengröße ändern**
+Die Zellengröße kann in der `App.css` angepasst werden:
+```css
+.cell {
+  width: 40px; /* Breite */
+  height: 40px; /* Höhe */
+}
+```
 
-### Making a Progressive Web App
+### **Standardgröße des Grids**
+Passe die Standardwerte in `App.js` an:
+```javascript
+const [rows, setRows] = useState(5); // Standardzeilen
+const [columns, setColumns] = useState(5); // Standardspalten
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## **Lizenz**
+Dieses Projekt steht unter der **MIT-Lizenz**.  
+Weitere Informationen findest du in der [LICENSE](LICENSE)-Datei.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## **Autor**
+Erstellt von **[Michael]**.  
