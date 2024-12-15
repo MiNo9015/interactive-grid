@@ -76,12 +76,6 @@ Aktive Zellen werden in einer Liste gruppiert nach Zeilen angezeigt, z. B.:
 
 ---
 
-## **Screenshots**
-
-### **Grid mit aktiven Zellen**
-![Grid mit aktiven Zellen](https://via.placeholder.com/600x400?text=Grid+Screenshot)
-
----
 
 ## **Anpassungen**
 
