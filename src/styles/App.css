@@ -39,7 +39,7 @@ button {
   padding: 3px 6px;
   border-radius: 4px;
   font-size: 16px;
-  pointer-events: none; /* Verhindert Interaktion mit dem Label */
+  pointer-events: none; /* Verhindere Interaktion mit dem Label */
   transform: translate(-50%, -120%);
   white-space: nowrap;
 }
