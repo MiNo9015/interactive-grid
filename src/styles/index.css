@@ -6,7 +6,7 @@ body {
   align-items: flex;  /* gleichmäßiger Abstand zum Rand horizontal */
   }
   
-  /* Entferne Standardabstände von Listen */
+  /* Entfernt Standardabstände Listen */
   ul {
     list-style-type: none; 
     padding: 0;

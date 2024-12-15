@@ -11,7 +11,7 @@ function App() {
 
   // Funktion, um den Status einer Zelle (aktiv/inaktiv) zuschalten
   const toggleCell = (row, col) => {
-    const cellId = `${row}-${col}`; // ID im Format "row-column", z. B. "2-3"
+    const cellId = `${row}-${col}`; // ID im Format "row-column", z. B. "1-1, 3-4, 6-19"
     if (activeCells.includes(cellId)) {
       // Wenn die Zelle bereits aktiv ist, deaktiviere sie
       setActiveCells(activeCells.filter((id) => id !== cellId));
@@ -68,7 +68,7 @@ function App() {
 const groupedActiveCells = sortedActiveCells.reduce((acc, cellId) => {
   const [row, col] = cellId.split("-").map(Number);
   if (!acc[row]) acc[row] = [];
-  acc[row].push(`(${row}, ${col})`);
+  acc[row].push(`(${row},${col})`);
   return acc;
 }, {});
 

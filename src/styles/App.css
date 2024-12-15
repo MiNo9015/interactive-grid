@@ -2,7 +2,7 @@
   font-family: Arial, sans-serif;
   text-align: center;
   max-width: 90%;  /* App nimmt max. 90% der Fensterbreite ein */
-  margin: 0 auto; /* Zentriere App */
+  margin: 0 auto; /* Zentrierung App */
  
 }
 
@@ -41,17 +41,17 @@ button {
 }
 
 .grid-container::-webkit-scrollbar {
-  height: 8px; /* Höhe horizontalen Scrollbar */
-  width: 8px; /* Breite vertikalen Scrollbar */
+  height: 8px; /* Höhe horizontale Scrollbar */
+  width: 8px; /* Breite vertikale Scrollbar */
 }
 
 .grid-container::-webkit-scrollbar-thumb {
-  background: #b91243; /* Farbe des Scrollbalkens */
+  background: #b91243; /* Farbe Scrollbalken */
   border-radius: 4px;
 }
 
 .grid-container::-webkit-scrollbar-thumb:hover {
-  background: #870c34; /* Hover-Farbe des Scrollbalkens */
+  background: #0056b3; /* Hover-Farbe Scrollbalken */
 }
 
 .grid-row {
@@ -61,11 +61,11 @@ button {
 .cell {
   width: 30px; /* Breite der Zellen */
   height: 30px; /* Höhe der Zellen */
-  background-color: grey; /* Hintergrundfarbe der Zellen inaktiv */
+  background-color: grey; /* Hintergrundfarbe der Zellen wenn inaktiv */
   margin: 1px;
   border: 1px solid #000;
-  cursor: pointer; /* Zeigt den Zeigefinger-Cursor an */
-  flex-shrink: 0;  /* Zellen schrumpfen nicht*/
+  cursor: pointer; /* Zeigt Zeigefinger-Cursor an, wenn über Zelle */
+  flex-shrink: 0;  /* Zellgröße verändert sich nicht*/
 }
 
 .cell.active {
@@ -82,14 +82,15 @@ button {
   list-style-type: none;
   padding: 0;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 60%;
 }
 
 .active-cells-list li {
   margin-bottom: 10px;
+  white-space-collapse: "),";
 }
 
 .cell-group {
   margin-left: 20px;
-  display: block;
+  display: inline-block;
 }
