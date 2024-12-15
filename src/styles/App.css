@@ -31,13 +31,29 @@ button {
   font-size: 14px;
 }
 
+/* Hover-Label für Koordinaten */
+.hover-label {
+  position: absolute;
+  background-color: #333;
+  color: #c71c1c;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 16px;
+  pointer-events: none; /* Verhindert Interaktion mit dem Label */
+  transform: translate(-50%, -120%);
+  white-space: nowrap;
+}
+
+
 .grid-container {
-  display: inline-block;
+  position: relative;
+  display: inline-block;     
   max-height: 70vh; /* Höhe Container */
   max-width: 90vw; /* Breite Containers */
   overflow: auto; /* Scrollbar bei Bedarf */
   border: 1px solid #ccc; /* Rahmen für Container */
   margin: 0 auto; /* Zentriert das Grid */
+  /*border: 2px solid red; */ /* Zum Debuggen des Containers Layouts */
 }
 
 .grid-container::-webkit-scrollbar {

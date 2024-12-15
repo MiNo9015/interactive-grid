@@ -9,6 +9,9 @@ function App() {
   // Zustand für aktiven Zellen
   const [activeCells, setActiveCells] = useState([]);
 
+  // Speicherung aktuelle Zelle beim Hover
+  const [hoveredCell, setHoveredCell] = useState(null); 
+
   // Funktion, um den Status einer Zelle (aktiv/inaktiv) zuschalten
   const toggleCell = (row, col) => {
     const cellId = `${row}-${col}`; // ID im Format "row-column", z. B. "1-1, 3-4, 6-19"
@@ -24,6 +27,7 @@ function App() {
   // Funktion zum Rendern des Grids basierend auf `rows` und `columns`
   const renderGrid = () => {
     const grid = []; // Array für die Zeilen des Grids
+    
 
     // Schleife für Zeilen
     for (let r = 1; r <= rows; r++) {
@@ -40,6 +44,9 @@ function App() {
             key={cellId} // React benötigt einen eindeutigen Schlüssel
             className={`cell ${isActive ? "active" : ""}`} // Aktive Zellen haben eine spezielle Klasse
             onClick={() => toggleCell(r, c)} // Klick-Event, um die Zelle zu aktivieren/deaktivieren
+            onMouseEnter={() => setHoveredCell(cellId)} // die Koordinaten bei Hover auf Zelle
+            onMouseLeave={() => setHoveredCell(null)} // Ausblenden Koordinaten 
+
           />
         );
       }
@@ -113,7 +120,7 @@ const resetToDefault = () => {
       </div>
 
       {/* Grid anzeigen */}
-      <div className="grid-container">{renderGrid()}</div>
+      <div className="grid-container">{renderGrid()} </div> {hoveredCell && <div className="hover-label">{hoveredCell}</div>}
 
       {/* Liste der aktiven Zellen */}
       <div className="active-cells">
@@ -125,7 +132,7 @@ const resetToDefault = () => {
             return (
               <li key={row}>
                 <div className="cell-group">
-                  <span>{`Zelle `}</span>
+                  <span><strong>{`Zelle `}</strong></span>
                   <span>{cells.join(", ")}</span>
                 </div>
               </li>
