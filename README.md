@@ -9,9 +9,7 @@ Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivie
 2. [Technologien](#technologien)
 3. [Installation](#installation)
 4. [Nutzung](#nutzung)
-5. [Screenshots](#screenshots)
-6. [Anpassungen](#anpassungen)
-7. [Lizenz](#lizenz)
+5. [Anpassungen](#anpassungen)
 
 ---
 
@@ -94,12 +92,6 @@ Passe die Standardwerte in `App.js` an:
 const [rows, setRows] = useState(5); // Standardzeilen
 const [columns, setColumns] = useState(5); // Standardspalten
 ```
-
----
-
-## **Lizenz**
-Dieses Projekt steht unter der **MIT-Lizenz**.  
-Weitere Informationen findest du in der [LICENSE](LICENSE)-Datei.
 
 ---
 
