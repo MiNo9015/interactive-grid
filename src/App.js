@@ -32,14 +32,14 @@ function App() {
       // Schleife für Spalten
       for (let c = 1; c <= columns; c++) {
         const cellId = `${r}-${c}`; // Eindeutige ID der Zelle
-        const isActive = activeCells.includes(cellId); // Prüfe, ob die Zelle aktiv ist
+        const isActive = activeCells.includes(cellId); // Prüfung Zelle aktiv
 
         // Zelle erstellen und zum Zeilen-Array hinzufügen
         row.push(
           <div
             key={cellId} // React benötigt einen eindeutigen Schlüssel
             className={`cell ${isActive ? "active" : ""}`} // Aktive Zellen haben eine spezielle Klasse
-            onClick={() => toggleCell(r, c)} // Klick-Event, um die Zelle zu toggeln
+            onClick={() => toggleCell(r, c)} // Klick-Event, um die Zelle zu aktivieren/deaktivieren
           />
         );
       }

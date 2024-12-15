@@ -1,7 +1,9 @@
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 20px;
+  max-width: 90%; 
+  margin: 0 auto; /* Zentriere App */
+ 
 }
 
 .title {
@@ -12,6 +14,10 @@
 
 .controls {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Abstand zwischen den Buttons und Inputs */
+  justify-content: center;
 }
 
 input[type="number"] {
@@ -20,32 +26,55 @@ input[type="number"] {
 }
 
 button {
-  margin-left: 10px;
-  padding: 5px 10px;
+  margin: 0; /* Entferne unnötige Außenabstände */
+  padding: 8px 12px; /* Gleichmäßige Polsterung */
   font-size: 14px;
 }
 
 .grid-container {
   display: inline-block;
-  border: 2px solid #f8f4f4;
-  padding: 5px;
+  max-height: 70vh;
+    max-width: 90vw;
+    border: 2px solid red; /* Zum Debuggen */
+    padding: 5px;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  white-space: nowrap; /* Verhindert Zeilenumbruch */
+}
+
+.grid-container::-webkit-scrollbar {
+  height: 8px; /* Höhe horizontalen Scrollbar */
+  width: 8px; /* Breite vertikalen Scrollbar */
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+  background: #b91243; /* Farbe des Scrollbalkens */
+  border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover {
+  background: #870c34; /* Hover-Farbe des Scrollbalkens */
 }
 
 .grid-row {
   display: flex; /* Jede Zeile enthält mehrere Zellen */
+  flex-wrap: nowrap; /* Verhindert Umbrüche innerhalb der Zeilen */
 }
 
 .cell {
-  width: 40px; /* Standard-Breite Zellen */
-  height: 40px; /* Standard-Höhe  Zellen */
-  background-color: grey; /* Standard-Hintergrundfarbe Zellen */
+  width: 30px; /* Breite der Zellen */
+  height: 30px; /* Höhe der Zellen */
+  background-color: grey; /* Hintergrundfarbe der Zellen inaktiv */
   margin: 1px;
   border: 1px solid #000;
-  cursor: pointer;
+  cursor: pointer; /* Zeigt den Zeigefinger-Cursor an */
+  display: block;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell.active {
-  background-color: green; /*Aktive Zellen = grün */
+  background-color: green; /* Aktive Zellen = grün */
 }
 
 .active-cells-header {
@@ -54,9 +83,11 @@ button {
 }
 
 .active-cells-list {
-  text-align: start;
+  text-align: left;
   list-style-type: none;
   padding: 0;
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 .active-cells-list li {
@@ -65,9 +96,5 @@ button {
 
 .cell-group {
   margin-left: 20px;
-  display: inline-block;
-}
-
-.cell-group span {
-  white-space: nowrap; /* Verhindert Umbruch Zelle (x, y) */
+  display: block;
 }
