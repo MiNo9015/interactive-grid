@@ -51,7 +51,7 @@ button {
   max-height: 70vh; /* Höhe Container */
   max-width: 90vw; /* Breite Containers */
   overflow: auto; /* Scrollbar bei Bedarf */
-  border: 1px solid #ccc; /* Rahmen für Container */
+  /*border: 1px solid #ccc;*/ /* Rahmen für Container */
   margin: 0 auto; /* Zentriert das Grid */
   /*border: 2px solid red; */ /* Zum Debuggen des Containers Layouts */
 }
@@ -99,6 +99,23 @@ button {
   padding: 0;
   margin: 0 auto;
   max-width: 60%;
+  min-height: 100px;
+  max-height: 15vh; /* Max. Höhe-Liste */
+  /*border: 1px solid #ccc;/* /*Rahmen für Liste */
+  overflow-y: auto; /* vert. Scrollbalken, wenn benötigt */
+}
+
+.active-cells-list::-webkit-scrollbar {
+  width: 8px; /* Breite Scrollbar */ 
+}
+
+.active-cells-list::-webkit-scrollbar-thumb {
+  background: #b91243; /* Farbe Scrollbalken */
+  border-radius: 4px;
+}
+
+.active-cells-list::-webkit-scrollbar-thumb:hover {
+  background: #0056b3; /* Hover-Farbe Scrollbalken */
 }
 
 .active-cells-list li {
@@ -109,4 +126,6 @@ button {
 .cell-group {
   margin-left: 20px;
   display: inline-block;
+  
 }
+

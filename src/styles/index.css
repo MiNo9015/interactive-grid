@@ -4,6 +4,7 @@ body {
   flex-direction: column; /* vertikale Ausrichtung */
   justify-content: center;
   align-items: flex;  /* gleichmäßiger Abstand zum Rand horizontal */
+  /* overflow: hidden; */
   }
   
   /* Entfernt Standardabstände Listen */
