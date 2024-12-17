@@ -5,12 +5,13 @@ function App() {
   // Anzahl der Zeilen und Spalten
   const [rows, setRows] = useState(5); // Standard: 5 Zeilen
   const [columns, setColumns] = useState(5); // Standard: 5 Spalten
-
   // Zustand für aktiven Zellen
   const [activeCells, setActiveCells] = useState([]);
-
   // Speicherung aktuelle Zelle beim Hover
   const [hoveredCell, setHoveredCell] = useState(null); 
+  // Hover-Position Cursor, aktuelle Zelle
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 }); 
+
 
   // Funktion, um den Status einer Zelle (aktiv/inaktiv) zuschalten
   const toggleCell = (row, col) => {
@@ -24,33 +25,37 @@ function App() {
     }
   };
 
+
+// Erfassung Mausbewegung und Aktualisierung der Hover-Daten
+const handleMouseMove = (e, cellId) => {
+  setHoveredCell(cellId);
+  setHoverPosition({ x: e.clientX, y: e.clientY }); // Mauskoordinaten setzen
+};
+
+
   // Funktion zum Rendern des Grids basierend auf `rows` und `columns`
   const renderGrid = () => {
     const grid = []; // Array für die Zeilen des Grids
-    
-
     // Schleife für Zeilen
     for (let r = 1; r <= rows; r++) {
       const row = []; // Array für die Spalten einer Zeile
-
       // Schleife für Spalten
       for (let c = 1; c <= columns; c++) {
         const cellId = `${r}-${c}`; // Eindeutige ID der Zelle
         const isActive = activeCells.includes(cellId); // Prüfung Zelle aktiv
-
         // Zelle erstellen und zum Zeilen-Array hinzufügen
         row.push(
           <div
             key={cellId} // React benötigt einen eindeutigen Schlüssel
             className={`cell ${isActive ? "active" : ""}`} // Aktive Zellen haben eine spezielle Klasse
             onClick={() => toggleCell(r, c)} // Klick-Event, um die Zelle zu aktivieren/deaktivieren
-            onMouseEnter={() => setHoveredCell(cellId)} // die Koordinaten bei Hover auf Zelle
+            onMouseEnter={(e) => handleMouseMove(e, cellId)} // die Koordinaten bei Hover auf Zelle
+            onMouseMove={(e) => handleMouseMove(e, cellId)}  // Erfassen von Mausbewegung
             onMouseLeave={() => setHoveredCell(null)} // Ausblenden Koordinaten 
 
           />
         );
       }
-
       // Zeile dem Grid-Array hinzufügen
       grid.push(
         <div key={`row-${r}`} className="grid-row">
@@ -66,10 +71,10 @@ function App() {
  const sortedActiveCells = [...activeCells].sort((a, b) => {
   const [rowA, colA] = a.split("-").map(Number);
   const [rowB, colB] = b.split("-").map(Number);
-
   // Sortieren nach Zeilen, dann Spalten
   return rowA === rowB ? colA - colB : rowA - rowB;
 });
+
 
 // Gruppiere die sortierten Zellen nach Zeilen
 const groupedActiveCells = sortedActiveCells.reduce((acc, cellId) => {
@@ -79,10 +84,12 @@ const groupedActiveCells = sortedActiveCells.reduce((acc, cellId) => {
   return acc;
 }, {});
 
+
 // Funktion leere alle aktiven Zellen
 const resetGrid = () => {
   setActiveCells([]); 
 };
+
 
 // Funktion Grid und aktiven Zellen zurückzusetzen
 const resetToDefault = () => {
@@ -90,6 +97,7 @@ const resetToDefault = () => {
   setColumns(5);
   setActiveCells([]);
 };
+
 
   return (
     <div className="App">
@@ -120,7 +128,20 @@ const resetToDefault = () => {
       </div>
 
       {/* Grid anzeigen */}
-      <div className="grid-container">{renderGrid()} </div> {hoveredCell && <div className="hover-label">{hoveredCell}</div>}
+      <div className="grid-container">{renderGrid()}</div> 
+      
+      {/* Hover-Koordinaten */}
+      {hoveredCell && (
+        <div
+          className="hover-label"
+          style={{
+            top: hoverPosition.y + 10, // Leicht unterhalb des Cursors
+            left: hoverPosition.x + 10, // Leicht rechts des Cursors
+          }}
+        > {/* Abschluss div-start*/}
+          {hoveredCell}
+        </div>
+      )}
 
       {/* Liste der aktiven Zellen */}
       <div className="active-cells">

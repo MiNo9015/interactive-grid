@@ -40,8 +40,9 @@ button {
   border-radius: 4px;
   font-size: 16px;
   pointer-events: none; /* Verhindere Interaktion mit dem Label */
-  transform: translate(-50%, -120%);
   white-space: nowrap;
+  transform: translate(0, -50%); /* Verschiebt Label leicht nach rechts */
+  z-index: 10; /* Label liegt über anderen Elementen */
 }
 
 
@@ -49,7 +50,7 @@ button {
   position: relative;
   display: inline-block;     
   max-height: 70vh; /* Höhe Container */
-  max-width: 90vw; /* Breite Containers */
+  max-width: 90vw; /* Breite Container */
   overflow: auto; /* Scrollbar bei Bedarf */
   /*border: 1px solid #ccc;*/ /* Rahmen für Container */
   margin: 0 auto; /* Zentriert das Grid */
