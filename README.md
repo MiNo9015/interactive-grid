@@ -8,19 +8,18 @@ Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivie
 1. [Funktionen](#funktionen)
 2. [Technologien](#technologien)
 3. [Installation](#installation)
-4. [Nutzung](#nutzung)
-5. [Anpassungen](#anpassungen)
-
+4. [Verwendung](#verwendung)
+5. [Komponenten](#komponenten)
+6. [Dateistruktur](#dateistruktur)
+7. [Stile](#stile)
+8. [Autor](#autor)
 ---
 
 ## **Funktionen**
-- **Grid-Steuerung**: Benutzer kann die Anzahl der Zeilen und Spalten dynamisch anpassen.
-- **Zellenaktivierung**: Durch Klicken werden Zellen aktiviert oder deaktiviert.
-- **Koordinatenanzeige**: Beim Überfahren (Hover) einer Zelle werden deren Koordinaten angezeigt.
-- **Gruppierte Anzeige aktiver Zellen**: Aktivierte Zellen werden nach Zeilen gruppiert und übersichtlich dargestellt.
-- **Reset-Optionen**: 
-   - Zurücksetzen der aktiven Zellen.
-   - Zurücksetzen des Grids auf den Standardzustand (5x5).
+- Dynamische Anpassung der Grid-Größe (Zeilen und Spalten).
+- Aktivierung/Deaktivierung von Zellen per Klick.
+- Anzeige der aktiven Zellen als Liste, sortiert und gruppiert nach Zeilen.
+- Reset-Buttons zum Leeren der aktiven Zellen oder Zurücksetzen auf ein Standard-Grid (5x5).
 
 ---
 
@@ -51,49 +50,77 @@ Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivie
    npm start
    ```
 
-5. Öffne die Anwendung unter:  
-   ```
-   http://localhost:3000
-   ```
+5. Öffne die Anwendung im Browser unter: [http://localshost:3000](http://localhost:3000).
+ 
+---
+
+## **Verwendung**
+1. **Grid-Größe anpassen:**
+   - Eingabe der gewünschten Anzahl an Zeilen und Spalten.
+   - Grid passt sich automatisch an.
+2. **Zellen aktivieren/deaktivieren:**
+   - Klicke auf eine Zelle, um sie zu aktivieren(grün)/deaktivieren(grau).
+3. **Aktive Zellen anzeigen:**
+   - Aktive Zellen werden in der Liste unterhalb des Grids angezeigt.
+4. **Reset-Buttons:**
+   - "Reset Aktive Zellen": Leert die Liste der aktiven Zellen.
+   - "Reset Grid (5x5)": Setzt die Grid-Größe auf 5x5 zurück und leert die aktiven Zellen.
 
 ---
 
-## **Nutzung**
+## **Komponenten**
+### **App.js**
+- Hauptkomponente, die alle anderen Komponenten zusammenführt.
+- Zuständig für die Verwaltung des globalen Zustands.
 
-### **Steuerungselemente**
-- **Zeilen/Spalten**: Gib die gewünschte Anzahl an Zeilen und Spalten ein.
-- **Klicken auf eine Zelle**: Aktiviert oder deaktiviert die jeweilige Zelle.
-- **Hover**: Zeigt die Koordinaten der Zelle an.
-- **Reset-Buttons**:
-   - *Reset Aktive Zellen*: Deaktiviert alle Zellen.
-   - *Reset Grid*: Setzt das Grid auf 5x5 zurück.
+### **Grid.js**
+- Stellt das Grid dar.
+- Ermöglicht die Aktivierung/Deaktivierung von Zellen.
+- Stellt kleinen Label (rechts vom Cursor) mit Koordianaten der Zelle über die man aktuell hovered dar.
 
-### **Anzeige der aktiven Zellen**
-Aktive Zellen werden in einer Liste gruppiert nach Zeilen angezeigt, z. B.:  
-`Zelle (1,2), (1,4)`.
+### **ActiveCellsList.js**
+- Zeigt die Liste der aktiven Zellen an.
+- Sortiert und gruppiert die Zellen nach Zeilen.
+
+### **GridInputFields.js**
+- Ermöglicht die Eingabe der Anzahl von Zeilen und Spalten.
+
+### **ResetButtons.js**
+- Buttons zum Zurücksetzen des Grids und|oder der aktiven Zellen.
 
 ---
 
-
-## **Anpassungen**
-
-### **Zellengröße ändern**
-Die Zellengröße kann in der `App.css` angepasst werden:
-```css
-.cell {
-  width: 40px; /* Breite */
-  height: 40px; /* Höhe */
-}
+## **Dateistruktur**
+```plaintext
+├── src
+│   ├── components
+│   │   ├── ActiveCellsList.js
+│   │   ├── Grid.js
+│   │   ├── GridInputFields.js
+│   │   ├── ResetButtons.js
+│   ├── styles
+│   │   ├── App.css
+│   │   ├── ActiveCellsList.css
+│   │   ├── Grid.css
+│   │   ├── GridInputFields.css
+│   │   ├── ResetButtons.css
+│   ├── App.js
+│   ├── index.js
+│   ├── index.html
 ```
 
-### **Standardgröße des Grids**
-Passe die Standardwerte in `App.js` an:
-```javascript
-const [rows, setRows] = useState(5); // Standardzeilen
-const [columns, setColumns] = useState(5); // Standardspalten
-```
+---
+
+## **Stile**
+Die Anwendung verwendet CSS-Dateien für jede Komponente, um den Code sauber und modular zu halten. Die wichtigsten Anpassungen umfassen:
+
+- **App.css:** Zentrierung und globale Layout-Stile.
+- **Grid.css:** Darstellung des Grids und der Zellen.
+- **ActiveCellsList.css:** Darstellung der Liste der aktiven Zellen.
+- **GridInputFields.css:** Styling der Eingabefelder für Zeilen und Spalten.
+- **ResetButtons.css:** Styling der Buttons.
 
 ---
 
 ## **Autor**
-Erstellt von **[Michael]**.  
+Erstellt von **[Michael]**.

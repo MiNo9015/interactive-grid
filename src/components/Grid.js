@@ -9,7 +9,7 @@ function Grid({ rows, columns, activeCells, setActiveCells }) {
 
     // Funktion, um den Status einer Zelle (aktiv/inaktiv) zuschalten
     const toggleCell = (row, col) => {
-        const cellId = `${row}-${col}`; // ID im Format "row-column", z. B. "1-1, 3-4, 6-19"
+        const cellId = `${row},${col}`; // ID im Format "row-column", z. B. "1-1, 3-4, 6-19"
         if (activeCells.includes(cellId)) {
             // Wenn die Zelle bereits aktiv ist, deaktiviere sie
             setActiveCells(activeCells.filter((id) => id !== cellId));
@@ -38,7 +38,7 @@ function Grid({ rows, columns, activeCells, setActiveCells }) {
             const row = []; // Array für die Spalten einer Zeile
             // Schleife für Spalten
             for (let c = 1; c <= columns; c++) {
-                const cellId = `${r}-${c}`; // Eindeutige ID der Zelle
+                const cellId = `${r},${c}`; // Eindeutige ID der Zelle
                 const isActive = activeCells.includes(cellId); // Prüfung Zelle aktiv
                 // Zelle erstellen und zum Zeilen-Array hinzufügen
                 row.push(
@@ -55,7 +55,7 @@ function Grid({ rows, columns, activeCells, setActiveCells }) {
             }
             // Zeile dem Grid-Array hinzufügen
             grid.push(
-                <div key={`row-${r}`} className="grid-row">
+                <div key={`row,${r}`} className="grid-row">
                     {row}
                 </div>
             );
