@@ -92,6 +92,9 @@ Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivie
 
 ## **Dateistruktur**
 ```plaintext
+interactive-grid
+├── public
+|   ├── index.html
 ├── src
 │   ├── components
 │   │   ├── ActiveCellsList.js
@@ -106,7 +109,7 @@ Ein **React-basiertes interaktives Grid**, das es ermöglicht, Zellen zu aktivie
 │   │   ├── ResetButtons.css
 │   ├── App.js
 │   ├── index.js
-│   ├── index.html
+│   
 ```
 
 ---
