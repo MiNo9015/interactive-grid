@@ -1,0 +1,15 @@
+.reset-buttons button {
+    background-color: #782f99; 
+    color: white;
+    border: none;
+    margin: 10px; /* Entfernt Außenabstände */
+    padding: 8px 15px; /* Polsterung */
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+.reset-buttons button:hover {
+    background-color: #0056b3; /* Mouseover-Button (hover) = Button andere Farbe  */
+  }

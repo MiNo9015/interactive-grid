@@ -1,0 +1,56 @@
+.grid-container {
+    position: relative;
+    display: inline-block;     
+    max-height: 65vh; /* Höhe Container */
+    max-width: 90vw; /* Breite Container */
+    overflow: auto; /* Scrollbar bei Bedarf */
+    /*border: 1px solid #ccc;*/ /* Rahmen für Container */
+    margin: 0 auto; /* Zentriert das Grid */
+    /*border: 2px solid red; */ /* Zum Debuggen des Containers Layouts */
+  }
+  
+  .grid-container::-webkit-scrollbar {
+    height: 8px; /* Höhe horizontale Scrollbar */
+    width: 8px; /* Breite vertikale Scrollbar */
+  }
+  
+  .grid-container::-webkit-scrollbar-thumb {
+    background: #b91243; /* Farbe Scrollbalken */
+    border-radius: 4px;
+  }
+  
+  .grid-container::-webkit-scrollbar-thumb:hover {
+    background: #0056b3; /* Hover-Farbe Scrollbalken */
+  }
+  
+  .grid-row {
+    display: flex; /* Jede Zeile enthält mehrere Zellen */
+  }
+  
+  .cell {
+    width: 30px; /* Breite der Zellen */
+    height: 30px; /* Höhe der Zellen */
+    background-color: grey; /* Hintergrundfarbe der Zellen wenn inaktiv */
+    margin: 1px;
+    border: 1px solid #000;
+    cursor: pointer; /* Zeigt Zeigefinger-Cursor an, wenn über Zelle */
+    flex-shrink: 0;  /* Zellgröße verändert sich nicht*/
+  }
+  
+  .cell.active {
+    background-color: green; /* Aktive Zellen = grün */
+  }
+  
+  /* Hover-Label für Koordinaten */
+  .hover-label {
+    position: fixed;   /* hält Label bei Cursor, verhindert Grit-Scrollbar unerwünscht erweitert werden */
+    background-color: #333;
+    color: #c71c1c;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 16px;
+    pointer-events: none; /* Verhindere Interaktion mit dem Label */
+    white-space: nowrap;
+    transform: translate(0, -50%); /* Verschiebt Label leicht nach rechts */
+    z-index: 10; /* Label liegt über anderen Elementen */
+  }
