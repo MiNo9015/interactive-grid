@@ -5,4 +5,5 @@ body {
   justify-content: center;
   align-items: flex;  /* gleichmäßiger Abstand zum Rand horizontal */
   /* overflow: hidden; */
-  }
+  background-color: black;
+}

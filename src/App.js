@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "./components/Grid";
 import ActiveCellsList from "./components/ActiveCellsList";
 import "./styles/App.css"; 
@@ -7,15 +7,36 @@ import ResetButtons from "./components/ResetButtons";
 
 function App() {
   
-  // Anzahl der Zeilen und Spalten
-  const [rows, setRows] = useState(5); // Standard: 5 Zeilen
-  const [columns, setColumns] = useState(5); // Standard: 5 Spalten
+  // Anzahl der Zeilen und Spalten beibehalten der gesetzten Werte
+  const [rows, setRows] = useState(() => {
+    return Number(localStorage.getItem("rows")) || 5;
+  }); // Standard: 5 Zeilen
+
+  const [columns, setColumns] = useState(() => {
+    return Number(localStorage.getItem("columns")) || 5;
+  }); // Standard: 5 Spalten
+
   // Zustand für aktiven Zellen
-  const [activeCells, setActiveCells] = useState([]);
+  const [activeCells, setActiveCells] = useState(() => {
+    return JSON.parse(localStorage.getItem("activeCells")) || [];
+  });
   
+  // Speichere Änderungen Zeilen, Spalten
+  useEffect(() => {
+    localStorage.setItem("rows", rows);
+    localStorage.setItem("columns", columns);
+    localStorage.setItem("activeCells", JSON.stringify(activeCells));
+  }, [rows, columns, activeCells]);
 
-  
-
+  // Behalte nur existierende aktive Zellen
+  useEffect(() => {
+    setActiveCells((prevActiveCells) =>
+      prevActiveCells.filter((cell) => {
+        const [row, col] = cell.split(",").map(Number);
+        return row <= rows && col <= columns;
+      })
+    );
+  }, [rows, columns]);
 
   return (
     <div className="App">

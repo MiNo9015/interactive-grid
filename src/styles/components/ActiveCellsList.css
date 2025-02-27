@@ -1,6 +1,11 @@
+.active-cells{
+  color:white;
+}
+
 .active-cells-header {
     text-align: center;
     margin-bottom: 20px;
+    
   }
   
   .active-cells-list {
