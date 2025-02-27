@@ -3,6 +3,23 @@ import "../styles/components/GridInputFields.css";
 
 function GridInputFields({ rows, columns, setRows, setColumns }) {
 
+  //verhindert negative Werte und setzt die Zeilenanzahl auf 1
+  const handleRowChange = (event) => {
+    let value = parseInt(event.target.value, 10);
+    if (isNaN(value) || value < 1) {
+      value = 1; // Verhindert negative Werte
+    }
+    setRows(value);
+  };
+  //verhindert negative Werte und setzt die Spaltenanzahl auf 1
+  const handleColumnChange = (event) => {
+    let value = parseInt(event.target.value, 10);
+    if (isNaN(value) || value < 1) {
+      value = 1;
+    }
+    setColumns(value);
+  };
+
   return (
     /* Steuerungselemente */
     <div className="controls">
@@ -11,8 +28,8 @@ function GridInputFields({ rows, columns, setRows, setColumns }) {
       <input
         type="number"
         value={rows} // Binde an Zeilen
+        onChange={handleRowChange} // Aktualisiere die Zeilenanzahl
         min="1"
-        onChange={(e) => setRows(Number(e.target.value))} // Aktualisiere die Zeilenanzahl
       />
     </label>
     <label>
@@ -20,8 +37,8 @@ function GridInputFields({ rows, columns, setRows, setColumns }) {
       <input
         type="number"
         value={columns} // Binde an den Spalten
+        onChange={handleColumnChange} // Aktualisiere die Spaltenanzahl
         min="1"
-        onChange={(e) => setColumns(Number(e.target.value))} // Aktualisiere die Spaltenanzahl
       />
     </label>
     </div>
